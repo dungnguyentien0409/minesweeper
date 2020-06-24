@@ -128,6 +128,7 @@ export class BoardComponent implements OnInit {
     openCell(cell: Cell) {
         if (cell.status == 'open') return;
 
+        this.config.remainCells--;
         cell.status = 'open';
         if (cell.proximityMines == 0) {
             for(let d of this.directions) {
@@ -270,8 +271,7 @@ export class BoardComponent implements OnInit {
                 this.correctFlag++;
             }
 
-            console.log(this.correctFlag + " " + this.config.mines);
-            if (this.correctFlag == this.config.mines) {
+            if (this.correctFlag == this.config.mines && this.config.remainCells == 0) {
                 this.updateHeaderStatus('win');
                 return 'win';
             }

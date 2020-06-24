@@ -7,6 +7,7 @@ export class Config {
     mines: number;
     level: string;
     width: number;
+    remainCells: number;
 
     constructor(boardInfo: any) {
         this.level = boardInfo.level;
@@ -14,6 +15,7 @@ export class Config {
         this.cols = boardInfo.cols;
         this.mines = boardInfo.mines;
         this.width = boardInfo.width;
+        this.remainCells = this.rows * this.cols - this.mines;
     }
 }
   
