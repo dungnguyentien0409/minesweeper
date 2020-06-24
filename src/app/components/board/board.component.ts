@@ -89,7 +89,6 @@ export class BoardComponent implements OnInit {
             var nextY = d[1] + cell.column;
 
             if (nextX == mineCell.row && nextY == mineCell.column) {
-                console.log(cell.row + " " + cell.column + "-" + nextX + " " + nextY);
                 return false;
             }
         }
@@ -116,6 +115,7 @@ export class BoardComponent implements OnInit {
         else {
             this.openCell(cell);
         }
+        this.checkWin();
 
         return;
     }
@@ -129,6 +129,7 @@ export class BoardComponent implements OnInit {
         if (cell.status == 'open') return;
 
         this.config.remainCells--;
+        console.log(this.config.remainCells);
         cell.status = 'open';
         if (cell.proximityMines == 0) {
             for(let d of this.directions) {
@@ -219,7 +220,7 @@ export class BoardComponent implements OnInit {
 
         if (countMine == mines) {
             this.focusedCells.forEach(closeCell => {
-                this.openCell(closeCell);
+                this.checkCell(closeCell);
             });
         }
         else {
@@ -233,6 +234,15 @@ export class BoardComponent implements OnInit {
         this.updateHeaderStatus('loose');
         
         return 'gameover';
+    }
+
+    checkWin() {
+        console.log(this.config.remainCells + " " + this.config.mines+ " " + this.correctFlag);
+        if (this.correctFlag == this.config.mines && this.config.remainCells == this.config.mines) {
+            console.log('win');
+            this.updateHeaderStatus('win');
+            return 'win';
+        }
     }
 
     revealAll() {
@@ -271,10 +281,7 @@ export class BoardComponent implements OnInit {
                 this.correctFlag++;
             }
 
-            if (this.correctFlag == this.config.mines && this.config.remainCells == 0) {
-                this.updateHeaderStatus('win');
-                return 'win';
-            }
+            this.checkWin();
         }
     }
 }

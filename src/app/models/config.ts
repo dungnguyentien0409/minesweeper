@@ -15,7 +15,7 @@ export class Config {
         this.cols = boardInfo.cols;
         this.mines = boardInfo.mines;
         this.width = boardInfo.width;
-        this.remainCells = this.rows * this.cols - this.mines;
+        this.remainCells = this.rows * this.cols;
     }
 }
   

@@ -33,14 +33,10 @@ export class HeaderComponent implements OnInit {
     }
 
     onClickReset(stt: string) {
-        this.config.status = 'play';
-        this.boom = this.config.mines;
-        this.configService.config$.next(this.config);
+        this.selectLevel(this.config.level);
     }
 
     selectLevel(level: any) {
-        if (level == this.config.level) return;
-
         switch(level) {
             case 'Easy':
                 this.config = new Config(LevelConstants.Easy);
@@ -56,6 +52,7 @@ export class HeaderComponent implements OnInit {
                 break;
         }
 
+        this.config.status = 'play';
         this.boom = this.config.mines;
         this.configService.config$.next(this.config);
     }
