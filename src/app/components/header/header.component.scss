@@ -11,6 +11,8 @@
     background-color: $dark-blue;
 }
 
+button:focus {outline:0;}
+
 .float-middle {
     .button {
         transform: scale(0.9);
