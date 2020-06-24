@@ -18,6 +18,7 @@ export class BoardComponent implements OnInit {
         leftClick: false,
         rightClick: false
     };
+    firstClick = false;
 
     constructor(private configService: ConfigService,
                 private flagService: FlagService) {
@@ -36,6 +37,7 @@ export class BoardComponent implements OnInit {
     generateBoard() {
         this.cells = [];
         this.correctFlag = 0;
+        this.firstClick = false;
 
         for(let x = 0; x < this.config.rows; x++) {
             this.cells[x] = [];
@@ -44,18 +46,19 @@ export class BoardComponent implements OnInit {
                 this.cells[x][y] = new Cell(x, y);
             }
         }
+    }
 
+    generateMines(firstCell: Cell) {
         // random mines
         var count = 0;
         while(count < this.config.mines) {
             var thisCell = this.randomCell();
 
-            if (!thisCell.mine) {
+            if (!thisCell.mine && this.checkFirstCell(firstCell, thisCell) == true) {
                 thisCell.mine = true;
                 count++;
             }
         }
-        console.log(count);
 
         // count adjacent
         for (let x = 0; x < this.config.rows; x++) {
@@ -77,7 +80,30 @@ export class BoardComponent implements OnInit {
         }
     }
 
+    checkFirstCell(cell: Cell, mineCell: Cell) {
+        if (cell.row == mineCell.row && cell.column == mineCell.column) return false;
+        
+        for(var i = 0; i < this.directions.length; i++) {
+            var d = this.directions[i];
+            var nextX = d[0] + cell.row;
+            var nextY = d[1] + cell.column;
+
+            if (nextX == mineCell.row && nextY == mineCell.column) {
+                console.log(cell.row + " " + cell.column + "-" + nextX + " " + nextY);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     onClick(event: any, cell: Cell) {
+        if (!this.firstClick) {
+            this.generateMines(cell);
+
+            this.firstClick = true;
+        }
+
         this.checkCell(cell);
     }
 

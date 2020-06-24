@@ -33,8 +33,6 @@ export class HeaderComponent implements OnInit {
     }
 
     onClickReset(stt: string) {
-        if (stt == 'play') return;
-
         this.config.status = 'play';
         this.boom = this.config.mines;
         this.configService.config$.next(this.config);

@@ -1,7 +1,7 @@
 <table>
-  <tr *ngFor="let row of cells; index as y">
+  <tr *ngFor="let row of cells">
     <td
-      *ngFor="let cell of row; index as x"
+      *ngFor="let cell of row"
       (click)="$event.stopPropagation(); $event.preventDefault(); onClick($event, cell)"
       (mousedown)="$event.stopPropagation(); $event.preventDefault(); mouseDown($event, cell)"
       (mouseup)="$event.stopPropagation(); $event.preventDefault(); mouseUp($event, cell)"
