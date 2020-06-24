@@ -1,0 +1,33 @@
+@import 'src/styles/utilities/variables.colors';
+
+.header {
+    height: 100%;
+    display: block;
+    padding: 5px 20px 5px 15px;
+}
+
+.button {
+    color: $light-grey;
+    background-color: $dark-blue;
+}
+
+.float-middle {
+    .button {
+        transform: scale(0.9);
+    }
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+    mat-card {
+        transform: scale(0.9);
+    }
+}
+
+.total-boom {
+    width: 50px;
+}

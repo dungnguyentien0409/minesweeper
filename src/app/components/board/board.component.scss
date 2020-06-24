@@ -1,0 +1,28 @@
+@import 'src/styles/utilities/variables.colors';
+
+table, td {
+    border: 1px solid $dark-blue;
+    border-collapse: collapse;
+}
+
+td {
+    width:33px;
+    height:33px;
+}
+
+
+.focus {
+    background-color: $light-blue !important;
+}
+
+.cell {
+    background: $dark-blue;
+    border: 1px outset $grey;
+}
+
+.open {
+    background-color: $light-grey;
+    height: 100%;
+    padding-top: 5px;
+    text-align: center;
+}

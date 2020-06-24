@@ -1,0 +1,21 @@
+@import 'src/styles/utilities/variables.colors';
+
+.container {
+    text-align: center;
+
+    .easy {
+        width: 350px;
+    }
+    .medium {
+        width: 500px;
+    }
+    .hard {
+        width: 995px;
+    }
+}
+
+.header {
+    background-color: $grey;
+    padding: 0px 5px 0px 5px;
+    width: 100%;
+}

@@ -1,0 +1,39 @@
+@import 'src/styles/utilities/variables.colors';
+
+div {
+    pointer-events: none;
+}
+
+span {
+    background-color: inherit;
+    vertical-align: middle;
+}
+
+.focus {
+    background-color: $light-blue;
+}
+
+.open {
+    background-color: $light-grey;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.boom {
+    background-color: $dark-red;
+}
+
+.flag {
+    color: $dark-red;
+    background-color: inherit;
+}
+
+$color-collection: (black, blue, green, red, purple, black, marron, gray, turquoise);
+@for $i from 0 to length($color-collection) {
+    .color-#{$i} {
+        color: nth($color-collection, $i + 1);
+    }
+}

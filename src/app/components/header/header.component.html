@@ -1,0 +1,24 @@
+<div class="row header">
+    <span class="float-left">
+        <button mat-button [matMenuTriggerFor]="menu">Level</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="selectLevel('Easy')">Easy</button>
+            <button mat-menu-item (click)="selectLevel('Medium')">Medium</button>
+            <button mat-menu-item (click)="selectLevel('Hard')">Hard</button>
+        </mat-menu>
+    </span>
+    <span [ngSwitch]="config.status" class="float-middle">
+        <button *ngSwitchCase="'play'" mat-fab class="button" (click)="onClickReset('play')">
+            <mat-icon>mood</mat-icon>
+        </button>
+        <button *ngSwitchCase="'loose'" mat-fab (click)="onClickReset('loose')">
+            <mat-icon>mood_bad</mat-icon>
+        </button>
+        <button *ngSwitchCase="'win'" mat-fab class="button" (click)="onClickReset('win')">
+            <mat-icon>refresh</mat-icon>
+        </button>
+    </span>
+    <span class="float-right">
+        <mat-card class="total-boom">{{ boom }}</mat-card>
+    </span>
+</div>

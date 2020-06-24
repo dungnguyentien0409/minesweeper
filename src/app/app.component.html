@@ -1,0 +1,13 @@
+<div *ngIf="this.config.status=='win'">
+    <fireworks ></fireworks>
+</div>
+<div class="container"
+    [style.width.px]="this.config.width">
+    <div class="header">
+        <header-component></header-component>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="board">
+        <board-component></board-component>
+    </div>
+</div>
