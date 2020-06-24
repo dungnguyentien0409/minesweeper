@@ -1,11 +1,13 @@
 <!-- <div>Status: {{ cell.status }}</div> -->
-<div *ngIf="cell.focus == true" class="focus"></div>
-<div *ngIf="cell.status === 'open' && !cell.mine" class="open" [ngClass]="'color-' + cell.proximityMines">
+<div *ngIf="cell.focus==true && cell.status=='close'" class="focus"></div>
+<div *ngIf="cell.status === 'open' && !cell.mine" class="open" 
+  [ngClass]="'color-' + cell.proximityMines">
   <span  *ngIf="cell.proximityMines==0; then thenBlock else elseBlock"></span>
   <ng-template #thenBlock></ng-template>
   <ng-template #elseBlock>{{ cell.proximityMines }}</ng-template>
 </div>
-<div *ngIf="cell.status === 'flag'">
+<div *ngIf="cell.status === 'flag'"
+  [ngClass]="{'wrong-flag' : cell.focus==true && cell.mine==false}">
   <span class="material-icons open flag">flag</span>
 </div>
 <div *ngIf="cell.mine && cell.status === 'open'" class="open"

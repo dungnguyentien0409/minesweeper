@@ -24,11 +24,18 @@ span {
 
 .boom {
     background-color: $dark-red;
+    height: 100%;
 }
 
 .flag {
     color: $dark-red;
     background-color: inherit;
+    height: 100%;
+}
+
+.wrong-flag {
+    background-color: $dark-grey;
+    height: 100%;
 }
 
 $color-collection: (black, blue, green, red, purple, black, marron, gray, turquoise);

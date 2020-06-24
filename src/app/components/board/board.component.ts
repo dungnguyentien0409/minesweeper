@@ -111,10 +111,7 @@ export class BoardComponent implements OnInit {
         if (cell.status != 'close') return;
 
         if (cell.mine) {
-            this.revealAll();
-            cell.focus = true;
-            this.updateHeaderStatus('loose');
-            return 'gameover';
+            return this.loose(cell);
         }
         else {
             this.openCell(cell);
@@ -173,9 +170,10 @@ export class BoardComponent implements OnInit {
     }
 
     mouseUp(event: any, cell: any) {
+        this.focusedCells.forEach(cell => cell.focus = false);
+        this.focusedCells = [];
+
         if(cell.status != 'open') {
-            this.focusedCells.forEach(cell => cell.focus = false);
-            this.focusedCells = [];
             return;
         }
 
@@ -186,14 +184,6 @@ export class BoardComponent implements OnInit {
             case 3:
                 this.lefrightClick.rightClick = false;
                 break;
-        }
-
-        if (this.focusedCells.length > 0) {
-            this.focusedCells.forEach(cell => {
-                cell.focus = false;
-            });
-
-            this.focusedCells = [];
         }
     }
 
@@ -210,12 +200,18 @@ export class BoardComponent implements OnInit {
             var y = cell.column + pos[1];
 
             if (x >= 0 && y >= 0 && x < this.config.rows && y < this.config.cols) {
-                if (this.cells[x][y].mine && this.cells[x][y].status == 'flag') {
+                var currentCell = this.cells[x][y];
+
+                if (currentCell.mine == false && currentCell.status == 'flag') {
+                    return this.loose(currentCell);
+                }
+
+                if (currentCell.mine == true && currentCell.status == 'flag') {
                     countMine++;
                 }
-                else if (this.cells[x][y].status == 'close') {
-                    this.focusedCells.push(this.cells[x][y]);
-                    this.cells[x][y].focus = true;
+                else if (currentCell.status == 'close') {
+                    this.focusedCells.push(currentCell);
+                    currentCell.focus = true;
                 }
             }
         });
@@ -228,6 +224,14 @@ export class BoardComponent implements OnInit {
         else {
 
         }
+    }
+
+    loose(cell: Cell) : 'gameover' | null {
+        cell.focus = true;
+        this.revealAll();
+        this.updateHeaderStatus('loose');
+        
+        return 'gameover';
     }
 
     revealAll() {
