@@ -1,0 +1,33 @@
+<div class="side-bar" [class.expand]="expandSideBar">
+    <!-- Dashboard -->
+    <button class="button-side-bar">
+        <i class="material-icons">chrome_reader_mode</i>
+        <span>Dashboard</span>
+    </button>
+
+    <!-- Sub-menu-Personal -->
+    <div class="sub-menu-container" [class.expand]="expandGame" (mouseover)="expandGame=true"
+        (mouseout)="isPersonalExpand=false">
+        <button class="button-side-bar" routerLink="/web/minesweeper">
+            <i class="material-icons">group</i>
+            <span>Minesweeper</span>
+        </button>
+        <button class="button-side-bar" routerLink="/web/2048">
+            <i class="material-icons">group</i>
+            <span>2048</span>
+        </button>
+    </div>
+    <!-- Personal -->
+    <button class="button-side-bar" (click)="showSubMenuGame()">
+        <i class="material-icons">person</i>
+        <span>Personal</span>
+        <div class="collapse-expand-container" [class.selected]="expandGame">
+            <i class="material-icons collapse-expand-icon">arrow_back</i>
+            <i class="material-icons collapse-expand-icon">arrow_forward</i>
+        </div>
+    </button>
+
+    <button class="button-side-bar button-logout" (click)="logOut()">
+        <span class="btnLogOut"><b>LOGOUT</b></span>
+    </button>
+</div>

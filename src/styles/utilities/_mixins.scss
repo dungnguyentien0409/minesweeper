@@ -1,0 +1,10 @@
+@mixin flex-item-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin normal-text-format {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.7);
+}

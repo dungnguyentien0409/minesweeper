@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Cell, Config } from '../../models/index';
-import { ConfigService, FlagService } from 'src/app/services';
+import { Cell, Config } from 'src/app/models/index';
+import { ConfigService, FlagService, LoaderService } from 'src/app/services';
 import { LevelConstants } from 'src/app/shared/constants/index';
 import { ThrowStmt } from '@angular/compiler';
 
@@ -21,7 +21,8 @@ export class BoardComponent implements OnInit {
     firstClick = false;
 
     constructor(private configService: ConfigService,
-                private flagService: FlagService) {
+                private flagService: FlagService,
+                private loaderService: LoaderService) {
         this.configService.config$.subscribe(res => {
             this.config = res;
 
@@ -29,6 +30,8 @@ export class BoardComponent implements OnInit {
                 this.generateBoard();
             }
         });
+
+        setTimeout(()=>{ this.loaderService.hideLoader(); }, 1000)
     }
 
     ngOnInit() {

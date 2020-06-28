@@ -1,0 +1,174 @@
+@import "src/styles/utilities/variables.colors";
+@import "src/styles/utilities/variables";
+@import "src/styles/utilities/mixins";
+
+$app-bar-height: 48px;
+$button-icon-width: 48px;
+$button-icon-padding: 13px;
+$logo-width: 46px;
+$logo-height: 46px;
+$nav-background-color: $color-top-bg;
+.app-bar {
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: $app-bar-height;
+  padding-right: 16px;
+  background: $nav-background-color;
+  border-bottom: 3px solid #b6b6b657;
+  .burger-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $button-icon-width;
+    height: $app-bar-height;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: $emerald-green;
+    cursor: pointer;
+    border: none;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    div {
+      height: $app-bar-height;
+      width: $button-icon-width;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      padding: $button-icon-padding;
+      span {
+        display: block;
+        height: 3px;
+        width: calc(#{$app-bar-height} - #{$button-icon-padding} * 2);
+        background: rgba(255, 255, 255, 0.5);
+        transition: all 0.3s ease;
+      }
+    }
+    &.expand {
+      span {
+        &:first-child {
+          transform-origin: left top;
+          transform: rotate(45deg) translateY(-4px) translateX(2px) scale3d(1, 0.65, 1);
+        }
+        &:nth-child(2) {
+          transform-origin: left center;
+          transform: scale(0);
+        }
+        &:last-child {
+          transform-origin: left bottom;
+          transform: rotate(-45deg) translateY(2px) translateX(3px) scale3d(1, 0.65, 1);
+        }
+      }
+    }
+  }
+  .title {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0px;
+    align-items: center;
+    margin-left: 16px;
+    // color: $color-petronas-solid-white;
+    color: $emerald-green;
+    color: $color-nav-bg;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    > span {
+      font-family: "MuseoSansW01-300";
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+  .button-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    margin: 0 0 0 8px;
+    background: none;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    > i {
+      max-width: 24px;
+      color: #7c7c7c;
+      &:hover {
+        color: #464646;
+      }
+    }
+    > .badges {
+      position: absolute;
+      top: 1px;
+      right: 6px;
+      width: 14px;
+      height: 14px;
+      line-height: 22px;
+      color: $solid-white;
+      background: #f44336;
+      position: absolute;
+      text-align: center;
+      display: inline-flex;
+      border-radius: 50%;
+      transition: transform 0.2s ease-in-out;
+      font-weight: 600;
+      font-size: 9px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+
+mat-form-field{
+  $mat-form-field: &;
+  width: 200px;
+}
+
+mat-icon i {
+  color: $color-action-icon !important;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.top-bar-input {
+  background: #444;
+  border: 0 none;
+  color: #d7d7d7;
+  width: 100px;
+  padding: 6px 0px 8px 12px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  font-family: "MuseoSansW01-300";
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}

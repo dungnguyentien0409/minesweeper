@@ -1,27 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './shared/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './redux/app.reducers';
 
-import { SharedService, ConfigService, FlagService } from './services/index';
+import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from 'src/app/core/core.module';
+
 import { AppComponent } from './app.component';
-import { CellComponent, BoardComponent, HeaderComponent, FireworksComponent } from './components/index';
+import { PageNotFoundComponent } from './web/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CellComponent,
-    BoardComponent,
-    HeaderComponent,
-    FireworksComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CoreModule,
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    //NgReduxModule,
+    StoreDevtoolsModule,
   ],
-  providers: [SharedService, ConfigService, FlagService],
+  providers: [
+    
+  ],
+  entryComponents: [
+    
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

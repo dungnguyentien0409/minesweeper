@@ -1,0 +1,7 @@
+<div *ngIf="show" class="preloader"
+     [ngClass]="{global: id === 'global', secondary: id !== 'global'}">
+  <div class="loader"></div>
+</div>
+
+<!--Delete this button when we use this component in production mode-->
+<button (click)="close()" *ngIf="id === 'global' && show">Close</button>

@@ -1,0 +1,99 @@
+@import 'src/styles/utilities/variables';
+@import 'src/styles/utilities/variables.colors';
+
+:host {
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+}
+
+.main {  
+    position: absolute;  
+    min-height: 100%;
+    min-width: 100%;
+    background-color: $white-smoke;
+
+    >.content {
+        width: 100%;
+        height: 100%;        
+
+        .breadcumb {
+            font-size: $font-size-breadcumb;
+        }
+        .title {
+            font-size: $font-size-title;
+            font-weight: $font-weight-title;
+            color: $emerald-green;
+        }
+
+        .container {
+            padding-left: 60px;
+            width: 100%;
+            padding-right: 10px;
+          
+            >.row {
+              margin-right: 0px;
+              margin-left: 0px;
+          
+              >.col {
+                padding-left: 0px;
+              }
+          
+              .mat-toolbar {
+                    margin-top: 48px;
+            
+                    >.mat-toolbar-row {
+                        padding-left: 0px;
+                
+                        span {
+                            padding: 0px 5px 3px 5px;
+                        }
+                
+                        i {
+                            cursor: pointer;
+                
+                            &:hover {
+                                color: $color-petronas !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+          
+        .material-icons {
+            color: #666 !important;
+        }
+    }
+}
+
+
+.find {
+    border-color: #00a19c!important;
+    background-color: #00a19c!important;
+}
+
+.print-background {
+    background-color: white;
+}
+
+@media print {
+    #navigation {
+        visibility: hidden;
+    }
+    .content {
+        visibility: hidden;
+    }
+    .main {
+        background-color: white;
+    }
+    .mat-tab-label-active {
+        background-color: white;
+    }
+    .print-background {
+        visibility: visible;
+        width: 100%;
+        height: auto;
+        background-color: white;
+    }
+}
