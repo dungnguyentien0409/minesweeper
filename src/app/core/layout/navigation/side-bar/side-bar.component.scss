@@ -1,6 +1,7 @@
+@import 'src/styles/utilities/variables';
 @import 'src/styles/utilities/variables.colors';
 @import 'src/styles/utilities/mixins';
-$app-bar-height: 48px;
+
 $side-bar-item-height: 48px;
 $side-bar-collapse-width: 48px;
 $side-bar-expand-width: 300px;
@@ -12,8 +13,8 @@ $nav-selected-background-color: #31302d;
     z-index: 3;
     overflow: auto;
     width: $side-bar-collapse-width;
-    height: calc(100vh - #{$app-bar-height});
-    top: $app-bar-height;
+    height: calc(100vh - #{$top-bar-height});
+    top: $top-bar-height;
     background: $emerald-green;
     //background: -webkit-gradient(linear, left top, left bottom, color-stop(0.3, #01A098), color-stop(0.7, #5D609B));
     transition: width 0.4s ease-in-out;

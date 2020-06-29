@@ -2,19 +2,18 @@
 @import "src/styles/utilities/variables";
 @import "src/styles/utilities/mixins";
 
-$app-bar-height: 48px;
 $button-icon-width: 48px;
 $button-icon-padding: 13px;
 $logo-width: 46px;
 $logo-height: 46px;
 $nav-background-color: $color-top-bg;
-.app-bar {
+.top-bar {
   z-index: 4;
   display: flex;
   align-items: center;
   position: fixed;
   width: 100%;
-  height: $app-bar-height;
+  height: $top-bar-height;
   padding-right: 16px;
   background: $nav-background-color;
   border-bottom: 3px solid #b6b6b657;
@@ -23,7 +22,7 @@ $nav-background-color: $color-top-bg;
     align-items: center;
     justify-content: center;
     width: $button-icon-width;
-    height: $app-bar-height;
+    height: $top-bar-height;
     margin: 0;
     padding: 0;
     border-radius: 0;
@@ -35,7 +34,7 @@ $nav-background-color: $color-top-bg;
       outline: none;
     }
     div {
-      height: $app-bar-height;
+      height: $top-bar-height;
       width: $button-icon-width;
       display: flex;
       justify-content: space-around;
@@ -44,7 +43,7 @@ $nav-background-color: $color-top-bg;
       span {
         display: block;
         height: 3px;
-        width: calc(#{$app-bar-height} - #{$button-icon-padding} * 2);
+        width: calc(#{$top-bar-height} - #{$button-icon-padding} * 2);
         background: rgba(255, 255, 255, 0.5);
         transition: all 0.3s ease;
       }
